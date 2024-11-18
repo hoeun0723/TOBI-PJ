@@ -4,3 +4,5 @@ function Start () {
         <S.StartWrapper><h1>TOBE 시작페이지 입니다.</h1></S.StartWrapper>
     )
 }
+
+export default Start;
