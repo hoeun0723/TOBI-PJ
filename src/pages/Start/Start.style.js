@@ -22,6 +22,7 @@ export const IntroContainer = styled.div`
 export const TitleContainer = styled.div`
   display: flex;
   flex-direction: row;
+  cursor: pointer;
 `;
 
 export const EngTitle = styled.div`
