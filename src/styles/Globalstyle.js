@@ -30,6 +30,7 @@ ${reset}
  html, body{
   overflow-x :  hidden;
   color: black;
+  background-color: #1A1A1A;
  }
  
 
