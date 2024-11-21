@@ -13,3 +13,19 @@ export const ControlContainer = styled.div`
   background-position: center;
   z-index: 1;
 `
+
+export const ModeContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
+export const ModeTitle = styled.div`
+  width: 151px;
+  height: 40px;
+  color: #1FAA67;
+  text-align: center;
+  font-size: 32px;
+  font-weight: 900;
+  margin-top: 45px;
+`
