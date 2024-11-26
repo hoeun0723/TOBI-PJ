@@ -9,8 +9,16 @@ function Start () {
     navigate('/choose');
   };
 
+  const handleNavigatePlant = () => {
+    navigate('/plant');
+  };
+
     return (
         <S.StartWrapper>
+          <S.FlowerContainer onClick={handleNavigatePlant}>
+            <S.FlowerIcon></S.FlowerIcon>
+            <S.FlowerText>my plant</S.FlowerText>
+          </S.FlowerContainer>
           <Credits/>
           <S.IntroContainer>
             온오프라인으로 함께하는 나의 반려 식물

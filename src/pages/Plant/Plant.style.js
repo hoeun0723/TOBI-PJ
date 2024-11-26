@@ -13,6 +13,7 @@ export const PotContainer = styled.div`
   top: 70px;
   display: flex;
   flex-direction: column;
+  pointer-events: none;
 `
 
 export const PotInfo = styled.div`

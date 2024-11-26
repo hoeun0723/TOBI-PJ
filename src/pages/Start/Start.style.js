@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Flower from '../../assets/PlantLink.png';
 
 export const StartWrapper = styled.div`
   color: #00E688;
@@ -8,6 +9,38 @@ export const StartWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+`;
+
+export const FlowerContainer = styled.div`
+  width: 100px;
+  height: 100px;
+  position: fixed;
+  left: 40px;
+  top: 61px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  cursor: pointer;
+`;
+
+export const FlowerIcon = styled.div`
+  width: 50px;
+  height: 50px;
+  background-image: url(${Flower});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
+export const FlowerText = styled.div`
+  width: 100px;
+  height: 40px;
+  color: #8A88FF;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 400;
 `;
 
 export const IntroContainer = styled.div`
