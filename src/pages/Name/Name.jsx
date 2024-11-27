@@ -1,5 +1,6 @@
 import * as S from './Name.style';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { usePlantContext } from '../../contexts/PlantContext.jsx';
 import Credits from '../../components/Credits/Credits';
 import LogoNav from '../../components/LogoNav/LogoNav';
 import Plant1 from '../../assets/산세베리아.svg';
@@ -7,9 +8,8 @@ import Plant2 from '../../assets/스킨답서스.svg';
 import Plant3 from '../../assets/테이블야자.svg';
 
 function Name() {
-  const location = useLocation();
   const navigate = useNavigate();
-  const { plant = '산세베리아' } = location.state || {};
+  const { plant, setUsername } = usePlantContext();
 
   const plantImages = {
     산세베리아: Plant1,
@@ -17,12 +17,13 @@ function Name() {
     테이블야자: Plant3,
   };
 
-  const backgroundImage = plantImages[plant] || Plant1;
+  const backgroundImage = plantImages[plant];
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter') {
-      const username = e.target.value || '토비'; 
-      navigate('/plant', { state: { plant, username } });
+      const name = e.target.value || '토비';
+      setUsername(name);
+      navigate('/plant');
     }
   };
 

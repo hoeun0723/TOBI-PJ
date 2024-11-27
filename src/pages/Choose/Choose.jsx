@@ -1,6 +1,7 @@
 import * as S from './Choose.style';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { usePlantContext } from '../../contexts/PlantContext.jsx';
 import Credits from '../../components/Credits/Credits';
 import LogoNav from '../../components/LogoNav/LogoNav';
 import Icon from '../../assets/infoicon.svg';
@@ -10,12 +11,12 @@ import Plant3 from '../../assets/테이블야자.svg';
 
 function Choose() {
   const navigate = useNavigate();
-  const [selectedPlant, setSelectedPlant] = useState(null);
+  const { setPlant } = usePlantContext();
 
   const handleNavigate = (plantName) => {
-    setSelectedPlant(plantName); // 선택된 식물 상태 저장
-    navigate('/name', { state: { plant: plantName } }); // navigate 시 상태 전달
-  };  
+    setPlant(plantName);
+    navigate('/name');
+  };
 
   return (
     <S.ChooseWrapper>

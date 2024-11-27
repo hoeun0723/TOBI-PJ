@@ -1,16 +1,18 @@
 import * as S from './Start.style';
 import { useNavigate } from 'react-router-dom';
+import { usePlantContext } from '../../contexts/PlantContext.jsx';
 import Credits from '../../components/Credits/Credits';
 
 function Start () {
   const navigate = useNavigate();
+  const { plant, username, ledValue, isAutoMode } = usePlantContext();
 
   const handleNavigate = () => {
     navigate('/choose');
   };
 
   const handleNavigatePlant = () => {
-    navigate('/plant');
+    navigate('/plant', { state: { plant, username, ledValue, isAutoMode } });
   };
 
     return (
