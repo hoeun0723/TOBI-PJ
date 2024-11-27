@@ -1,6 +1,6 @@
 import * as S from './Plant.style';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Plant1 from '../../assets/산세베리아.svg';
 import Plant2 from '../../assets/스킨답서스.svg';
 import Plant3 from '../../assets/테이블야자.svg';
@@ -29,9 +29,11 @@ function Plant () {
 
   const dateCount = "00";
 
+  const [ledValue, setLedValue] = useState(0);
+
   return (
     <S.PlantWrapper>
-      <Status/>
+      <Status ledValue={ledValue} plant={plant} username={username} />
       <S.PotContainer>
         <S.PotInfo>
           <S.Username>{username}</S.Username>
@@ -39,9 +41,9 @@ function Plant () {
         </S.PotInfo>
         <S.PlantImage src={plantImage} alt={plant} />
       </S.PotContainer>
-      <Control/>
+      <Control ledValue={ledValue} setLedValue={setLedValue} />
     </S.PlantWrapper>
-  )
+  );
 }
 
 export default Plant;

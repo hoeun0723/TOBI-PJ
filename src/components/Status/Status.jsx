@@ -1,17 +1,17 @@
 import * as S from './Status.style';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import ledIcon from '../../assets/led.png';
 import soilIcon from '../../assets/soil.png';
 import sunIcon from '../../assets/sun.png';
 import waterIcon from '../../assets/water.png';
 
-function Status () {
-  const location = useLocation();
-  const { plant = '산세베리아', username = '토비' } = location.state || {};
+function Status({ ledValue, plant, username }) {
   const waterFigure = '55';
   const soilFigure = '55';
   const sunFigure = 'high';
-  const ledFigure = '3';
+
+  const ledFigure = Math.min(10, Math.floor(ledValue / 10) + 1);
 
   return (
     <S.StatusContainer>
@@ -42,7 +42,7 @@ function Status () {
         <S.PlantName>{plant}</S.PlantName>
       </S.Container2>
     </S.StatusContainer>
-  )
+  );
 }
 
 export default Status;

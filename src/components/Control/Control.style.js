@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import ControlBoard from '../../assets/ControlBoard.svg';
 import SwitchAuto from '../../assets/Switch_auto.svg';
 import SwitchIot from '../../assets/Switch_iot.svg';
@@ -17,24 +17,24 @@ export const ControlContainer = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   z-index: 1;
-`
+`;
 
 export const ModeContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`
+`;
 
 export const ModeTitle = styled.div`
-  width: 151px;
+  width: 200px;
   height: 40px;
   color: #1FAA67;
   text-align: center;
   font-size: 32px;
   font-weight: 900;
   margin-top: 45px;
-`
+`;
 
 export const ModeToggle = styled.div`
   position: absolute;
@@ -54,10 +54,11 @@ export const ModeToggle = styled.div`
 export const Toggle = styled.div`
   width: 44px;
   height: 24px;
-  background-image: url(${SwitchIot});
+  background-image: url(${(props) => (props.isAutoMode ? SwitchAuto : SwitchIot)});
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  cursor: pointer;
 `;
 
 export const ModeExplain1 = styled.div`
@@ -116,7 +117,7 @@ export const Buttons2 = styled.div`
 `;
 
 export const ButtonName = styled.div`
-  color: #000000;
+  color: ${(props) => (props.isAutoMode ? '#1FAA67' : '#000000')};
   font-size: 24px;
   font-weight: 700;
 `;
@@ -124,10 +125,12 @@ export const ButtonName = styled.div`
 export const Button = styled.div`
   width: 24px;
   height: 24px;
-  background-image: url(${ButtonOff});
+  background-image: url(${(props) => (props.isActive ? ButtonOn : ButtonOff)});
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+  cursor: ${(props) => (props.isDisabled ? 'not-allowed' : 'pointer')};
+  pointer-events: ${(props) => (props.isDisabled ? 'none' : 'auto')};
 `;
 
 export const LedContainer = styled.div`
@@ -138,7 +141,7 @@ export const LedContainer = styled.div`
 `;
 
 export const LedTitle = styled.div`
-  color: #000000;
+  color: ${(props) => (props.isAutoMode ? '#1FAA67' : '#000000')};
   font-size: 24px;
   font-weight: 700;
   position: absolute;
@@ -161,29 +164,23 @@ export const LedSlider = styled.input`
   appearance: none;
   width: 300px;
   height: 4px;
-  background: linear-gradient(to right, #1A1A1A ${(props) => props.value}%, #1FAA67 ${(props) => props.value}%);
+  background: ${(props) =>
+    props.isDisabled
+      ? '#1FAA67'
+      : `linear-gradient(to right, #1A1A1A ${props.value}%, #1FAA67 ${props.value}%)`};
   border-radius: 5px;
   outline: none;
-  cursor: pointer;
+  cursor: ${(props) => (props.isDisabled ? 'not-allowed' : 'pointer')};
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;
     appearance: none;
     width: 16px;
     height: 16px;
-    background: #ffffff;
+    background: ${(props) => (props.isDisabled ? '#ffffff' : '#ffffff')};
     border: 2px solid #1FAA67;
     border-radius: 50%;
-    cursor: pointer;
-  }
-
-  &::-moz-range-thumb {
-    width: 20px;
-    height: 20px;
-    background: #ffffff;
-    border: 2px solid #000000;
-    border-radius: 50%;
-    cursor: pointer;
+    cursor: ${(props) => (props.isDisabled ? 'not-allowed' : 'pointer')};
   }
 `;
 
@@ -224,4 +221,25 @@ export const ButtonMessage = styled.div`
   position: absolute;
   right: 120px;
   bottom: 284px;
+  opacity: ${(props) => (props.isVisible ? 1 : 0)};
+  animation: ${(props) => (props.isVisible ? fadeIn : fadeOut)} 0.5s ease;
+  transition: opacity 0.5s ease;
+`;
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 `;
