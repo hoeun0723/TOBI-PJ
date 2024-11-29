@@ -2,13 +2,11 @@ import * as S from './Status.style';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import ledIcon from '../../assets/led.png';
-import soilIcon from '../../assets/soil.png';
 import sunIcon from '../../assets/sun.png';
 import waterIcon from '../../assets/water.png';
 
 function Status({ ledValue, plant, username }) {
   const waterFigure = '55';
-  const soilFigure = '55';
   const sunFigure = 'high';
 
   const ledFigure = Math.min(10, Math.floor(ledValue / 10) + 1);
@@ -20,11 +18,6 @@ function Status({ ledValue, plant, username }) {
           <S.StatusIcon imageUrl={waterIcon}/>
           <S.StatusTitle>토양습도:</S.StatusTitle>
           <S.StatusFigure>{waterFigure}%</S.StatusFigure>
-        </S.Status>
-        <S.Status>
-          <S.StatusIcon imageUrl={soilIcon}/>
-          <S.StatusTitle>토양온도:</S.StatusTitle>
-          <S.StatusFigure>{soilFigure}°C</S.StatusFigure>
         </S.Status>
         <S.Status>
           <S.StatusIcon imageUrl={sunIcon}/>

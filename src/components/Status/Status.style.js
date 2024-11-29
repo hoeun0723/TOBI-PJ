@@ -22,8 +22,9 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 21px;
-  margin-top: 40px;
+  gap: 30px;
+  margin-top: 70px;
+  margin-left: 5px;
 `
 
 export const Container2 = styled.div`
@@ -33,7 +34,7 @@ export const Container2 = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 50px;
+  margin-top: 60px;
 `
 
 export const Title = styled.div`

@@ -1,5 +1,5 @@
 import * as S from './Plant.style';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { usePlantContext } from '../../contexts/PlantContext.jsx';
 import Plant1 from '../../assets/산세베리아.svg';
 import Plant2 from '../../assets/스킨답서스.svg';
@@ -43,6 +43,32 @@ function Plant() {
     }
   }, [plantCreationDate, setPlantCreationDate]);
 
+  const [messages, setMessages] = useState([]);
+  const messageTexts = ['만나서 반가워요!', '77분 전에 물을 줬어요.', '산소 만드는 중 🎵'];
+  const [messageIndex, setMessageIndex] = useState(0);
+
+  const handlePlantClick = () => {
+    setMessages((prev) => {
+      const newMessages = [...prev];
+      if (newMessages.length >= 3) newMessages.shift();
+      newMessages.push({
+        id: Date.now(), 
+        text: messageTexts[messageIndex], 
+      });
+      return newMessages;
+    });
+    setMessageIndex((prevIndex) => (prevIndex + 1) % messageTexts.length);
+  };
+
+  useEffect(() => {
+    const timers = messages.map((message) =>
+      setTimeout(() => {
+        setMessages((prev) => prev.filter((msg) => msg.id !== message.id));
+      }, 5000)
+    );
+    return () => timers.forEach(clearTimeout);
+  }, [messages]);
+
   return (
     <S.PlantWrapper>
       <Status ledValue={ledValue} plant={plant} username={username} />
@@ -51,9 +77,16 @@ function Plant() {
           <S.Username>{username}</S.Username>
           <S.DateCount>D + {dateCount}</S.DateCount>
         </S.PotInfo>
-        <S.PlantImage src={plantImage} alt={plant} />
+        <S.PlantImage src={plantImage} alt={plant} onClick={handlePlantClick} />
       </S.PotContainer>
       <Control ledValue={ledValue} setLedValue={setLedValue} />
+      <S.MessageContainer>
+        {messages.map((message) => (
+          <S.MessageBubble key={message.id} isVisible>
+            <S.Message>{message.text}</S.Message>
+          </S.MessageBubble>
+        ))}
+      </S.MessageContainer>
     </S.PlantWrapper>
   );
 }
