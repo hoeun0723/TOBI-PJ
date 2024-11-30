@@ -44,7 +44,7 @@ function Plant() {
   }, [plantCreationDate, setPlantCreationDate]);
 
   const [messages, setMessages] = useState([]);
-  const messageTexts = ['만나서 반가워요!', '77분 전에 물을 줬어요.', '산소 만드는 중 🎵'];
+  const messageTexts = ['만나서 반가워요!', '77분 전에 물을 줬어요.', '산소 만드는 중 🎵', '오늘 하루는 어떠셨나요?'];
   const [messageIndex, setMessageIndex] = useState(0);
 
   const handlePlantClick = () => {
