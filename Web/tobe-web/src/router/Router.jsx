@@ -1,27 +1,40 @@
-// import Start from "../pages/Start/Start";
-// import Login from "../components/Login";
 import { createBrowserRouter } from 'react-router-dom';
 import Layout from '../layouts/Layout';
 import Start from '../pages/Start/Start';
-import OnBoarding from '../pages/OnBoarding/OnBoarding';
-import Main from '../pages/Main/Main';
-import SearchByEmotion from '../pages/SearchByEmotion/SearchByEmotion';
-import EmotionView from '../pages/EmotionView/EmotionView';
-import FastDiary from '../pages/FastDiary/FastDiary';
-import DiaryView from '../pages/DiaryView/DiaryView';
-import SlowDiary from '../pages/SlowDiary/SlowDiary';
-import MyPage from '../pages/MyPage/MyPage';
-import CharacterWiki from '../pages/CharacterWiki/CharacterWiki';
-import DiaryList from '../pages/DiaryList/DiaryList';
-import LoginCallback from '../components/common/buttons/KakaoLogin/LoginCallback/LoginCallback';
-import Loading from '../pages/Loading/Loading';
-import SharedView from '../pages/SharedView/SharedView';
-import Information from '../pages/Information/Information';
-import Weather from '../pages/Weather/Weather';
-import LoginError from '../pages/LoginError/LoginError';
-import SearchDiary from '../pages/SearchDiary/SearchDiary';
+import Choose from '../pages/Choose/Choose';
+import Name from '../pages/Name/Name';
+import Plant from '../pages/Plant/Plant';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Outlet, useLocation } from 'react-router-dom';
 
-/*이런 식으로 작성하기*/
+const AnimatedLayout = () => {
+  const location = useLocation();
+
+  return (
+    <AnimatePresence mode="wait">
+      <div style={{ position: 'relative' }}>
+        <motion.div
+          key={location.key}
+          initial={{ opacity: 0, y: 100 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -100 }}
+          transition={{
+            duration: 0.5,
+            ease: 'easeInOut',
+          }}
+          style={{
+            position: 'absolute',
+            width: '100%',
+            willChange: 'transform, opacity',
+          }}
+        >
+          <Outlet />
+        </motion.div>
+      </div>
+    </AnimatePresence>
+  );
+};
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -29,7 +42,13 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Start />,
+        element: <AnimatedLayout />,
+        children: [
+          { path: '/', element: <Start /> },
+          { path: '/choose', element: <Choose /> },
+          { path: '/name', element: <Name /> },
+          { path: '/plant', element: <Plant /> },
+        ],
       },
     ],
   },
