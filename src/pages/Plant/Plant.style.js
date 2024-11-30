@@ -1,7 +1,71 @@
 import styled, { keyframes, css } from 'styled-components';
 import bubble from '../../assets/messageBg.svg';
+import Death from '../../assets/Deathicon.svg';
+import Tip from '../../assets/Tipicon.svg';
+
+export const IconsContainer = styled.div`
+  position: absolute;
+  top: 30px;
+  right: 53px;
+  display: flex;
+  flex-direction: row;
+  gap: 45px;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const DeathContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export const DeathIcon = styled.div`
+  width: 40px;
+  height: 40px;
+  background-image: url(${Death});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
+
+export const TipContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 400;
+  &:hover {
+    text-decoration: underline;
+  }
+`;
+
+export const TipIcon = styled.div`
+  width: 40px;
+  height: 40px;
+  background-image: url(${Tip});
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+`;
 
 export const PlantWrapper = styled.div`
+  font-family: Pretendard;
   width: 100%;
   height: 100vh;
   display: flex;

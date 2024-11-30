@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const ChooseWrapper = styled.div`
+  font-family: Pretendard;
   width: 100%;
   height: 100vh;
   display: flex;

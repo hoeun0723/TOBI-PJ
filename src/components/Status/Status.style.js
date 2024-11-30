@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import StatBoard from '../../assets/StatBoard.svg';
 
 export const StatusContainer = styled.div`
+  font-family: Pretendard;
   position: fixed;
   align-items: center;
   top: 35px;

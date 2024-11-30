@@ -7,6 +7,7 @@ import ButtonOff from '../../assets/Btn_default.svg';
 import LedSteps from '../../assets/Steps.png';
 
 export const ControlContainer = styled.div`
+  font-family: Pretendard;
   position: fixed;
   align-items: center;
   bottom: 0px;

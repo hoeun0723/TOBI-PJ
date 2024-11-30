@@ -79,6 +79,14 @@ function Plant() {
         </S.PotInfo>
         <S.PlantImage src={plantImage} alt={plant} onClick={handlePlantClick} />
       </S.PotContainer>
+      <S.IconsContainer>
+        <S.TipContainer>
+          <S.TipIcon/> Tip !
+        </S.TipContainer>
+        <S.DeathContainer>
+          <S.DeathIcon/> 식물이 시들었어요
+        </S.DeathContainer>
+      </S.IconsContainer>
       <Control ledValue={ledValue} setLedValue={setLedValue} />
       <S.MessageContainer>
         {messages.map((message) => (

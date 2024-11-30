@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import Flower from '../../assets/PlantLink.png';
 
 export const StartWrapper = styled.div`
+  font-family: Pretendard;
   color: #00E688;
   width: 100%;
   height: 100vh;
