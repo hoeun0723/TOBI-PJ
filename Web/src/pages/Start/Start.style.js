@@ -43,7 +43,6 @@ export const FlowerText = styled.div`
   text-align: center;
   font-size: 20px;
   font-weight: 400;
-
   /* Media Query for smaller screens */
   @media (max-width: 768px) {
     font-size: 16px;

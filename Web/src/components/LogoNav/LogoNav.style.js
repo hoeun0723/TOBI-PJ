@@ -11,7 +11,6 @@ export const LogoContainer = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
-
   /* Media Query for smaller screens */
   @media (max-width: 768px) {
     top: 60px;

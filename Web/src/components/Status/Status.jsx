@@ -41,4 +41,4 @@ function Status({ plant, data, ledValue }) {
   );
 }
 
-export default Status;
+export default Status;lt Status;
