@@ -14,6 +14,10 @@ function Choose() {
   const { setPlant } = usePlantContext();
 
   const handleNavigate = (plantName) => {
+    console.log(selectedPlant);
+    setSelectedPlant(plantName); // 선택된 식물 상태 저장
+    navigate('/name', { state: { plant: plantName } }); // navigate 시 상태 전달
+  };  
     setPlant(plantName);
     navigate('/name');
   };

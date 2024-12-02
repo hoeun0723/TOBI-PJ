@@ -18,6 +18,13 @@ export const ControlContainer = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   z-index: 1;
+
+  /* Media Query for smaller screens */
+  @media (max-width: 768px) {
+    width: 100%;
+    height: 200px;
+    background-size: cover;
+  }
 `;
 
 export const ModeContainer = styled.div`
@@ -25,7 +32,12 @@ export const ModeContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-`;
+
+  @media (max-width: 768px) {
+    align-items: flex-start;
+    padding-left: 20px;
+  }
+`;;
 
 export const ModeTitle = styled.div`
   width: 200px;
@@ -35,6 +47,12 @@ export const ModeTitle = styled.div`
   font-size: 32px;
   font-weight: 900;
   margin-top: 45px;
+
+  @media (max-width: 768px) {
+    font-size: 24px;
+    margin-top: 50px;
+    margin-left: 100px;
+  }
 `;
 
 export const ModeToggle = styled.div`
@@ -50,6 +68,13 @@ export const ModeToggle = styled.div`
   display: flex;
   flex-direction: row;
   gap: 15px;
+
+  @media (max-width: 768px) {
+    top: 150px;
+    left: 20px;
+    font-size: 20px;
+    gap: 10px;
+  }
 `;
 
 export const Toggle = styled.div`
@@ -60,6 +85,11 @@ export const Toggle = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
+
+  @media (max-width: 768px) {
+    width: 36px;
+    height: 20px;
+  }
 `;
 
 export const ModeExplain1 = styled.div`
@@ -70,8 +100,9 @@ export const ModeExplain1 = styled.div`
   text-align: left;
   font-size: 20px;
   font-weight: 500;
-  strong {
-    font-weight: 700;
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -83,8 +114,9 @@ export const ModeExplain2 = styled.div`
   text-align: left;
   font-size: 20px;
   font-weight: 500;
-  strong {
-    font-weight: 700;
+
+  @media (max-width: 768px) {
+    display: none;
   }
 `;
 
@@ -104,6 +136,12 @@ export const Buttons1 = styled.div`
   position: absolute;
   right: 140px;
   top: 48px;
+
+  @media (max-width: 768px) {
+    right: 20px;
+    top: 150px;
+    gap: 10px;
+  }
 `;
 
 export const Buttons2 = styled.div`
@@ -115,12 +153,22 @@ export const Buttons2 = styled.div`
   position: absolute;
   right: 140px;
   top: 93px;
+
+  @media (max-width: 768px) {
+    right: 20px;
+    top: 100px;
+    gap: 10px;
+  }
 `;
 
 export const ButtonName = styled.div`
   color: ${(props) => (props.isAutoMode ? '#1FAA67' : '#000000')};
   font-size: 24px;
   font-weight: 700;
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
 `;
 
 export const Button = styled.div`
@@ -132,6 +180,11 @@ export const Button = styled.div`
   background-position: center;
   cursor: ${(props) => (props.isDisabled ? 'not-allowed' : 'pointer')};
   pointer-events: ${(props) => (props.isDisabled ? 'none' : 'auto')};
+
+  @media (max-width: 768px) {
+    width: 20px;
+    height: 20px;
+  }
 `;
 
 export const LedContainer = styled.div`
@@ -148,6 +201,12 @@ export const LedTitle = styled.div`
   position: absolute;
   left: 100px;
   top: 48px;
+
+  @media (max-width: 768px) {
+    font-size: 15px;
+    left: 20px;
+    top: 90px;
+  }
 `;
 
 export const LedSliderContainer = styled.div`
@@ -158,6 +217,12 @@ export const LedSliderContainer = styled.div`
   position: absolute;
   left: 20px;
   top: 114px;
+
+  @media (max-width: 768px) {
+    width: 300px;
+    top: 100px;
+    left: -70px;
+  }
 `;
 
 export const LedSlider = styled.input`
@@ -190,6 +255,10 @@ export const SliderLabel = styled.div`
   text-align: center;
   font-size: 16px;
   font-weight: 700;
+
+  @media (max-width: 768px) {
+    display:none;
+  }
 `;
 
 export const LabelContainer = styled.div`
@@ -199,6 +268,10 @@ export const LabelContainer = styled.div`
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
+
+  @media (max-width: 768px) {
+    gap: 120px;
+  }
 `;
 
 export const SliderSteps = styled.div`
@@ -212,6 +285,12 @@ export const SliderSteps = styled.div`
   top: 22px;
   left: 101px;
   pointer-events: none;
+
+  @media (max-width: 768px) {
+    width: 250px;
+    top: 20px;
+    left: 50px;
+  }
 `;
 
 export const ButtonMessage = styled.div`
@@ -242,5 +321,11 @@ const fadeOut = keyframes`
   }
   to {
     opacity: 0;
+  }
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    bottom: 200px;
+    right: 20px;
   }
 `;
