@@ -1,33 +1,40 @@
 import * as S from './Control.style';
-import { useLocation, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
+import { usePlantContext } from '../../contexts/PlantContext.jsx';
 
 function Control({ ledValue, setLedValue }) {
+  const { mode, setMode, updatePlantData, fetchPlantData } = usePlantContext();
+
   const [buttonState, setButtonState] = useState({ isWatering: false, isRefreshing: false });
   const [buttonMessage, setButtonMessage] = useState('');
   const [isMessageVisible, setIsMessageVisible] = useState(false);
-  const [isAutoMode, setIsAutoMode] = useState(false); 
 
   const handleSliderChange = (e) => {
-    if (isAutoMode) return; 
-    setLedValue(parseInt(e.target.value, 10));
+    if (mode === 'auto') return; 
+    const newLedValue = parseInt(e.target.value, 10);
+    setLedValue(newLedValue);
+    updatePlantData({ led: newLedValue, ledUpdatedAt: new Date().toISOString() });
   };
 
-  const handleButtonClick = (type) => {
-    if (isAutoMode) return;
-
+  const handleButtonClick = async (type) => {
+    if (mode === 'auto') return; 
     if (type === 'water') {
       setButtonState({ ...buttonState, isWatering: true });
       setButtonMessage('물 주는 중 ...');
+      await updatePlantData({ pump: true, pumpUpdatedAt: new Date().toISOString() });
     } else if (type === 'refresh') {
       setButtonState({ ...buttonState, isRefreshing: true });
-      setButtonMessage('살펴보는 중 ...');
+      setButtonMessage('새로고침 중 ...');
+      await fetchPlantData(); 
     }
 
     setIsMessageVisible(true);
 
     setTimeout(() => {
       setIsMessageVisible(false);
+      if (type === 'water') {
+        updatePlantData({ pump: false });
+      }
       setTimeout(() => {
         setButtonState({ isWatering: false, isRefreshing: false });
         setButtonMessage('');
@@ -36,16 +43,18 @@ function Control({ ledValue, setLedValue }) {
   };
 
   const toggleMode = () => {
-    setIsAutoMode((prevMode) => !prevMode); 
+    const newMode = mode === 'auto' ? 'manual' : 'auto';
+    setMode(newMode);
+    updatePlantData({ mode: newMode });
   };
 
   return (
     <S.ControlContainer>
       <S.ModeContainer>
-        <S.ModeTitle>{isAutoMode ? 'AuTo MODE' : 'IoT MODE'}</S.ModeTitle>
+        <S.ModeTitle>{mode === 'auto' ? 'Auto MODE' : 'IoT MODE'}</S.ModeTitle>
         <S.ModeToggle>
           모드 변경
-          <S.Toggle isAutoMode={isAutoMode} onClick={toggleMode} />
+          <S.Toggle isAutoMode={mode === 'auto'} onClick={toggleMode} />
         </S.ModeToggle>
         <S.ModeExplain1>
           <strong>IoT MODE:</strong> 원격으로 직접 내 식물 관리가 가능해요.
@@ -56,24 +65,24 @@ function Control({ ledValue, setLedValue }) {
       </S.ModeContainer>
       <S.ButtonsContainer>
         <S.Buttons1>
-          <S.ButtonName isAutoMode={isAutoMode}>물주기</S.ButtonName>
+          <S.ButtonName isAutoMode={mode === 'auto'}>물주기</S.ButtonName>
           <S.Button
             isActive={buttonState.isWatering}
             onClick={() => handleButtonClick('water')}
-            isDisabled={isAutoMode}
+            isDisabled={mode === 'auto'}
           />
         </S.Buttons1>
         <S.Buttons2>
-          <S.ButtonName isAutoMode={isAutoMode}>상태 새로고침</S.ButtonName>
+          <S.ButtonName isAutoMode={mode === 'auto'}>상태 새로고침</S.ButtonName>
           <S.Button
             isActive={buttonState.isRefreshing}
             onClick={() => handleButtonClick('refresh')}
-            isDisabled={isAutoMode}
+            isDisabled={mode === 'auto'}
           />
         </S.Buttons2>
       </S.ButtonsContainer>
       <S.LedContainer>
-        <S.LedTitle isAutoMode={isAutoMode}>LED 조명 조절</S.LedTitle>
+        <S.LedTitle isAutoMode={mode === 'auto'}>LED 조명 조절</S.LedTitle>
         <S.LedSliderContainer>
           <S.LabelContainer>
             <S.SliderLabel>조명 끔</S.SliderLabel>
@@ -86,7 +95,7 @@ function Control({ ledValue, setLedValue }) {
             step="1"
             value={ledValue}
             onChange={handleSliderChange}
-            isDisabled={isAutoMode}
+            disabled={mode === 'auto'}
           />
           <S.SliderSteps />
         </S.LedSliderContainer>
