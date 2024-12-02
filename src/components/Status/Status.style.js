@@ -42,14 +42,9 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-<<<<<<< HEAD
   gap: 30px;
   margin-top: 70px;
   margin-left: 5px;
-`
-=======
-  gap: 21px;
-  margin-top: 40px;
 
   /* 반응형 */
   @media (max-width: 768px) {
@@ -62,7 +57,6 @@ export const Container = styled.div`
     margin-top: 20px;
   }
 `;
->>>>>>> a7ccc2171ed8a08ec8ee38ee76b3731a7ca71cd1
 
 export const Container2 = styled.div`
   width: 100%;
@@ -71,12 +65,7 @@ export const Container2 = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-<<<<<<< HEAD
   margin-top: 60px;
-`
-=======
-  margin-top: 50px;
-
   /* 반응형 */
   @media (max-width: 768px) {
     margin-top: 30px;
@@ -86,7 +75,6 @@ export const Container2 = styled.div`
     margin-top: 20px;
   }
 `;
->>>>>>> a7ccc2171ed8a08ec8ee38ee76b3731a7ca71cd1
 
 export const Title = styled.div`
   color: #000000;

@@ -19,7 +19,6 @@ export const ControlContainer = styled.div`
   background-position: center;
   z-index: 1;
 
-  /* Media Query for smaller screens */
   @media (max-width: 768px) {
     width: 100%;
     height: 200px;
@@ -37,7 +36,7 @@ export const ModeContainer = styled.div`
     align-items: flex-start;
     padding-left: 20px;
   }
-`;;
+`;
 
 export const ModeTitle = styled.div`
   width: 200px;
@@ -100,6 +99,9 @@ export const ModeExplain1 = styled.div`
   text-align: left;
   font-size: 20px;
   font-weight: 500;
+  strong {
+    font-weight: 700;
+  }
 
   @media (max-width: 768px) {
     display: none;
@@ -114,6 +116,9 @@ export const ModeExplain2 = styled.div`
   text-align: left;
   font-size: 20px;
   font-weight: 500;
+  strong {
+    font-weight: 700;
+  }
 
   @media (max-width: 768px) {
     display: none;
@@ -304,6 +309,12 @@ export const ButtonMessage = styled.div`
   opacity: ${(props) => (props.isVisible ? 1 : 0)};
   animation: ${(props) => (props.isVisible ? fadeIn : fadeOut)} 0.5s ease;
   transition: opacity 0.5s ease;
+
+  @media (max-width: 768px) {
+    font-size: 20px;
+    bottom: 200px;
+    right: 20px;
+  }
 `;
 
 const fadeIn = keyframes`
@@ -321,11 +332,5 @@ const fadeOut = keyframes`
   }
   to {
     opacity: 0;
-  }
-
-  @media (max-width: 768px) {
-    font-size: 20px;
-    bottom: 200px;
-    right: 20px;
   }
 `;

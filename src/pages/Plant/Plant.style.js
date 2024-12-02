@@ -76,11 +76,10 @@ export const PlantWrapper = styled.div`
 
 export const PotContainer = styled.div`
   position: relative;
-  top: 20px;
+  top: 50px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  pointer-events: none;
 
   /* 반응형 레이아웃 */
   @media (max-width: 768px) {
@@ -186,7 +185,6 @@ export const ControlContainer = styled.div`
   @media (max-width: 480px) {
     height: auto;
   }
-`;
 
   cursor: pointer;
 `;
