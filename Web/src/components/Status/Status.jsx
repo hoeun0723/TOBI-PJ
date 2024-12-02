@@ -1,40 +1,36 @@
+/* eslint-disable react/prop-types */
 import * as S from './Status.style';
-import { useLocation } from 'react-router-dom';
 import ledIcon from '../../assets/led.png';
-import soilIcon from '../../assets/soil.png';
 import sunIcon from '../../assets/sun.png';
 import waterIcon from '../../assets/water.png';
+import { usePlantContext } from '../../contexts/PlantContext';
 
-function Status () {
-  const location = useLocation();
-  const { plant = '산세베리아', username = '토비' } = location.state || {};
-  const waterFigure = '55';
-  const soilFigure = '55';
-  const sunFigure = 'high';
-  const ledFigure = '3';
+function Status({ plant, data, ledValue }) {
+  // `null`일 경우 기본값을 0으로 설정
+  const humidity = data?.humidity ?? 0;
+  const brightness = data?.brightness ?? 0;
+  const { mode } = usePlantContext();
+
+  // mode에 따라 표시할 단계 결정
+  const ledDisplay = mode === "auto" ? `${data?.led}` : `${ledValue}`;
 
   return (
     <S.StatusContainer>
       <S.Container>
         <S.Status>
-          <S.StatusIcon imageUrl={waterIcon}/>
+          <S.StatusIcon imageUrl={waterIcon} />
           <S.StatusTitle>토양습도:</S.StatusTitle>
-          <S.StatusFigure>{waterFigure}%</S.StatusFigure>
+          <S.StatusFigure>{humidity}%</S.StatusFigure>
         </S.Status>
         <S.Status>
-          <S.StatusIcon imageUrl={soilIcon}/>
-          <S.StatusTitle>토양온도:</S.StatusTitle>
-          <S.StatusFigure>{soilFigure}°C</S.StatusFigure>
-        </S.Status>
-        <S.Status>
-          <S.StatusIcon imageUrl={sunIcon}/>
+          <S.StatusIcon imageUrl={sunIcon} />
           <S.StatusTitle>햇빛:</S.StatusTitle>
-          <S.StatusFigureStrong>{sunFigure}</S.StatusFigureStrong>
+          <S.StatusFigureStrong>{brightness}</S.StatusFigureStrong>
         </S.Status>
         <S.Status>
-          <S.StatusIcon imageUrl={ledIcon}/>
+          <S.StatusIcon imageUrl={ledIcon} />
           <S.StatusTitle>LED:</S.StatusTitle>
-          <S.StatusFigureStrong>{ledFigure}단계</S.StatusFigureStrong>
+          <S.StatusFigureStrong>{ledDisplay}단계</S.StatusFigureStrong>
         </S.Status>
       </S.Container>
       <S.Container2>
@@ -42,7 +38,7 @@ function Status () {
         <S.PlantName>{plant}</S.PlantName>
       </S.Container2>
     </S.StatusContainer>
-  )
+  );
 }
 
 export default Status;

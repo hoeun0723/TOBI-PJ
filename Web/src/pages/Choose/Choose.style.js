@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const ChooseWrapper = styled.div`
+  font-family: Pretendard;
   width: 100%;
   height: 100vh;
   display: flex;
@@ -16,12 +17,26 @@ export const InfoContainer = styled.div`
   gap: 18px;
   align-items: center;
   margin-top: 229px;
+
+  /* Media Query for smaller screens */
+  @media (max-width: 768px) {
+    width: 90%;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 100px;
+  }
 `;
 
 export const InfoIcon = styled.div`
   width: 40px;
   height: 40px;
   flex-shrink: 0;
+
+  /* Media Query for smaller screens */
+  @media (max-width: 768px) {
+    width: 30px;
+    height: 30px;
+  }
 `;
 
 export const InfoMessage = styled.div`
@@ -31,6 +46,11 @@ export const InfoMessage = styled.div`
   font-size: 32px;
   font-style: normal;
   font-weight: 400;
+
+  /* Media Query for smaller screens */
+  @media (max-width: 768px) {
+    font-size: 15px;
+  }
 `;
 
 export const PlantChoices = styled.div`
@@ -39,13 +59,20 @@ export const PlantChoices = styled.div`
   justify-content: center;
   gap: 200px;
   margin-top: 100px;
+
+  /* Media Query for smaller screens */
+  @media (max-width: 768px) {
+    flex-direction: column;
+    gap: 50px;
+    margin-top: 50px;
+  }
 `;
 
 export const PlantCard = styled.div`
   width: 200px;
   height: 383.681px;
   cursor: pointer;
-  position: relative; 
+  position: relative;
   margin-top: 0;
 
   img {
@@ -60,6 +87,12 @@ export const PlantCard = styled.div`
 
   &:hover > div {
     display: flex;
+  }
+
+  /* Media Query for smaller screens */
+  @media (max-width: 768px) {
+    width: 100px;
+    height: 250px;
   }
 `;
 
@@ -81,6 +114,12 @@ export const PlantName = styled.div`
   ${PlantCard}:hover & {
     display: block;
   }
+
+  /* Media Query for smaller screens */
+  @media (max-width: 768px) {
+    font-size: 24px;
+    width: 150px;
+  }
 `;
 
 export const PlantInfo = styled.div`
@@ -93,6 +132,12 @@ export const PlantInfo = styled.div`
   width: 200px;
   transform: translate(-50%, -50%);
   z-index: 10;
+
+  /* Media Query for smaller screens */
+  @media (max-width: 768px) {
+    gap: 10px;
+    width: 150px;
+  }
 `;
 
 export const Info = styled.div`
@@ -101,4 +146,9 @@ export const Info = styled.div`
   font-size: 20px;
   font-style: normal;
   font-weight: 700;
-`
+
+  /* Media Query for smaller screens */
+  @media (max-width: 768px) {
+    font-size: 16px;
+  }
+`;
