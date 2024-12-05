@@ -9,7 +9,7 @@ export const PlantProvider = ({ children }) => {
   const [id, setId] = useState("산세베리아");
   const [plantName, setPlantName] = useState("토비");
   const [led, setLed] = useState(1);
-  const [mode, setMode] = useState("manual");
+  const [mode, setMode] = useState("auto");
   const [humidity, setHumidity] = useState(0);
   const [brightness, setBrightness] = useState(0);
   const [pump, setPump] = useState(false);
