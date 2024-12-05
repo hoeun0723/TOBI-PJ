@@ -169,7 +169,7 @@ function Control({ ledValue, setLedValue, data }) {
   
       const result = await response.json();
       console.log('Success:', result);
-      setButtonMessage('LED 값이 성공적으로 전송되었습니다!');
+      setButtonMessage('LED 값 전송중...');
       setIsMessageVisible(true);
   
       setTimeout(() => setIsMessageVisible(false), 3000);
